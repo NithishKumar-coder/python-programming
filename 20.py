@@ -1,8 +1,12 @@
 def mains():
-    name=input()
-    ph=input()
-    email=input()
-mains()
+  print("customer details:")
+  print("name:",name)
+  print('phone:',ph)
+  print('email:',email)
+
+name=input()
+ph=input()
+email=input()
 distance=int(input())
 
 def fun():
@@ -25,14 +29,10 @@ def fun():
 fun()
 print('is price affordable')
 a=input()
-list=[]
+
 if a=='yes':
-    print('thanks')
-    list.append(mains())
+    print('thanks') 
+    mains() 
 else:
     fun()
-
-
-
-
-     
+    mains()
