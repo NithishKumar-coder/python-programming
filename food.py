@@ -6,8 +6,8 @@ password=int(input())
 if password=='1234':
   u=input('enter the food you want')
   if u=='idli':
-    g=int(input('how many do you want')
-    if g<'0':
+    g=int(input('how many do you want'))
+    if g<0:
       t=g*10
       if t<100:
         print("your charge is:",t)
@@ -17,7 +17,7 @@ if password=='1234':
     else:
       print('cannot place the order')
   elif  u=='dosa':
-    g=int(input('how many do you want')
+    g=int(input('how many do you want'))
     if g>0:
       t=g*30
       if t<100:
@@ -28,7 +28,7 @@ if password=='1234':
     else:
       print('cannot place the order')
   elif u=='poori':
-    g=int(input('how many do you want')
+    g=int(input('how many do you want'))
     if g>0:
       t=g*50
       if t<100:
@@ -39,7 +39,7 @@ if password=='1234':
     else:
       print('cannot place the order')
   elif u=='pizza':
-    g=int(input('how many do you want')
+    g=int(input('how many do you want'))
     if g>0:
       t=g*150
       if t<100:
@@ -50,6 +50,6 @@ if password=='1234':
     else:
       print('cannot place the order')
   else:
-    print('we dont have the item;)
+    print('we dont have the item')
 else:
   print('invalid password')
