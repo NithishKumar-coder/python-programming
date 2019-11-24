@@ -1,3 +1,6 @@
 N=input()
-N=int(N)
-print((~N))
+if N==complex(N):
+  print('invalid')
+else:
+  N=int(N)
+  print((~N))
