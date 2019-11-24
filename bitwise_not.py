@@ -1,5 +1,5 @@
 N=input()
-if N==complex(N):
+if N=='i':
   print('invalid')
 else:
   N=int(N)
