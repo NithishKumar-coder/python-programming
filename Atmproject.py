@@ -1,4 +1,4 @@
-import re
+
 name=input('enter your name:')
 def mai():
   mail=input('enter your mail id:')
