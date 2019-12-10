@@ -29,7 +29,7 @@ mob()
 def pin():
   while True:
     pin=input("enter pin:")
-    if ('!', pin):
+    if '!'in pin:
       break
     else:
         print("incorrect")
