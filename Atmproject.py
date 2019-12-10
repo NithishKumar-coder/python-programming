@@ -29,7 +29,7 @@ mob()
 def pin():
   while True:
     pin=input("enter pin:")
-    if re.match(r'[A-Za-z0-9@#$%^&+=]{6,}', pin):
+    if ('!', pin):
       break
     else:
         print("incorrect")
