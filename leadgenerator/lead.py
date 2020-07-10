@@ -1,22 +1,24 @@
 import requests 
+import spacy
 import re
+import json
+import csv
 from bs4 import BeautifulSoup
 url="http://www.econtentmag.com/Articles/Editorial/Feature/The-Top-100-Companies-in-the-Digital-Content-Industry-The-2016-2017-EContent-100-114156.htm"   
-
+nlp =spacy.load('en_core_web_sm') 
 def get_webpage(url):
     if "http" in url:
-        res=requests.get(url)
+        res=requests.get(url,headers={'User-Agent': 'XYZ/3.0'},timeout=5)
         data=res.text
-        get_webpage_text(data)
-
-        get_contact_page_link(data)
 
         return data
     else:
         print("none")
 
 def get_webpage_text(data):
-    soup=BeautifulSoup(data,"lxml")
+    response=requests.get(data)
+    html=response.text
+    soup=BeautifulSoup(html,"lxml")
     text=soup.findAll(text=True)
     def visible(element):
         #including elements in style,script,head 
@@ -41,6 +43,7 @@ def get_list(page_html):
             company.append(i.text)
             company.append(i.get('href'))
             company_lists.append(company)
+    #print(company_lists)
     
     return company_lists
 
@@ -48,22 +51,86 @@ def get_contact_page_link(html):
     rock=[]
     prefun=get_list(html)
     l=[]
-    
-    for i in prefun:
-        l.append(i[1])
-    for j in l:
-        response=requests.get(j, timeout=5)
-        data=response.text
-        beauty=BeautifulSoup(data,"lxml")
-        link=beauty.findAll('a')
-        for ij in link:
-            if ij.text=="About" or ij.text=="Contact Us":
-                rock.append(ij.get('href'))
-        print(rock)
+    cena=[]
+    punk=[]
+    cm=[]
+    try:
+        for i in prefun:
+            punk.append(i[0])
+            l.append(i[1])
+        for j in range(0,2):
+            print(l[j])
+            response=requests.get(l[j])
+            data=response.text
+            beauty=BeautifulSoup(data,"lxml")
+            link=beauty.findAll('a')
+            for ij in link:
+                if "About" in ij.text:
+                    url=ij.get('href')
+                    rock.append(l[j]+url)
+        for i in rock:
+            if i not in cena:
+                cena.append(i)
+        for i in range(0,2):
+            cm.append([punk[i],cena[i]])
+        print(cm)
+    except:
+        print(i[0])
+    return cm
+
+def get_location(text):
+    gets_list=[]
+    doc=nlp(text)
+    for ent in doc.ents:
+        if 'GPE' in ent.label_:
+            gets_list.append(ent.text)
+    fresh=[]
+    for i in gets_list:
+        if i not in fresh:
+            fresh.append(i)
+    return fresh
+
+def save_to_json(filename,json_dict):
+     with open(filename, "w") as f:
+            f.write(json.dumps(json_dict, sort_keys=False, indent=2, separators=(',', ': ')))
+
+def json_to_csv_file(json_filename,csv_filename):
+    with open(json_filename) as json_file: 
+        data =json.load(json_file)
+        temp=[]
+        for i in data:
+            temp.append({"company name":i,"location":data[i]})
+        fields = ["company name","location"]  
+        with open(csv_filename, 'w') as csvfile: 
+            writer = csv.DictWriter(csvfile, fieldnames = fields)  
+            writer.writeheader()  
+            writer.writerows(temp) 
 
 
-def main():
-    get_webpage(url)
-main()
+def main(url):
+
+    html= get_webpage(url)
+    compa=get_list(html)
+    print(compa)
+    page_html=get_webpage(url)
+
+    contact_list=get_contact_page_link(page_html)
+    print(contact_list)
+    print()
+    filename="locs.json"
+    com_dict={}
+    for company in contact_list:
+        name=company[0]
+        url=company[1]
+        text=get_webpage_text(url)
+        loction_list=get_location(text)
+        loction_list.sort()
+        com_dict[name]=loction_list
+        print()
+    print(com_dict)
+    save_to_json(filename,com_dict)
+    json_to_csv_file(filename,"locs.csv")
+
+main(url)
 
 
