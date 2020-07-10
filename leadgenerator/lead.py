@@ -17,8 +17,18 @@ def get_webpage(url):
 def get_webpage_text(data):
     soup=BeautifulSoup(data,"lxml")
     text=soup.findAll(text=True)
-
-    return text
+    def visible(element):
+        #including elements in style,script,head 
+        if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
+            return False
+        #for returning texts
+        elif re.match('<!--.*-->', str(element.encode('utf-8'))):
+            return False
+        return True
+    result =list(filter(visible, text)) #The filter() function returns  text were the items are filtered through visible() function to test if the item is accepted or not.
+    #replacing all \n characters obtained in result
+    content_text=("".join(result)).replace("\n"," ")
+    return content_text
 
 def get_list(page_html):
     soup=BeautifulSoup(page_html,"lxml")
