@@ -50,15 +50,6 @@ def get_contact_page_link(html):
                 rock.append(ij.get('href'))
         print(rock)
 
-    '''for i in range(0,2):
-        response=requests.get(company_links[i])
-        data=response.text
-        beauty=BeautifulSoup(data,"lxml")
-        link=beauty.findAll("a")
-        for i in link:
-            if i.text=="About" or i.text=="Contact Us":
-                links.append(i.get('href'))
-        print(links)'''
 
 def main():
     get_webpage(url)
