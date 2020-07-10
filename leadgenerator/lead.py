@@ -1,4 +1,5 @@
 import requests 
+import re
 from bs4 import BeautifulSoup
 url="http://www.econtentmag.com/Articles/Editorial/Feature/The-Top-100-Companies-in-the-Digital-Content-Industry-The-2016-2017-EContent-100-114156.htm"   
 
