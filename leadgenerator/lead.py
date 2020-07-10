@@ -16,6 +16,18 @@ def get_webpage_text(data):
     text=soup.findAll("p")
     print(text)
     return text
+def get_list(page_html):
+    soup=BeautifulSoup(page_html,"lxml")
+    tab=soup.findAll("a",{"class":"100link"})
+    company_lists=[]
+    
+    for i in tab:
+        if i.text!="View From The Top Profile":
+            company=[]
+            company.append(i.text)
+            company.append(i.get('href'))
+            company_lists.append(company)
+    return(company_lists)
 def main():
     get_webpage(url)
 main()
