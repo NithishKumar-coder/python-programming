@@ -1,6 +1,7 @@
 import requests 
 import spacy
 import re
+import logging
 import json
 import csv
 from bs4 import BeautifulSoup
@@ -50,33 +51,30 @@ def get_list(page_html):
 def get_contact_page_link(html):
     rock=[]
     prefun=get_list(html)
-    l=[]
     cena=[]
-    punk=[]
-    cm=[]
-    try:
-        for i in prefun:
-            punk.append(i[0])
-            l.append(i[1])
-        for j in range(0,2):
-            print(l[j])
-            response=requests.get(l[j])
+    for i in prefun[:2]:
+        try:
+            comp_name=i[0]
+            comp_url=i[1]
+            response=requests.get(comp_url)
             data=response.text
             beauty=BeautifulSoup(data,"lxml")
             link=beauty.findAll('a')
-            for ij in link:
-                if "About" in ij.text:
-                    url=ij.get('href')
-                    rock.append(l[j]+url)
-        for i in rock:
-            if i not in cena:
-                cena.append(i)
-        for i in range(0,2):
-            cm.append([punk[i],cena[i]])
-        print(cm)
-    except:
-        print(i[0])
-    return cm
+            for j in link:
+                if "About" in j.text:
+                    url=j.get('href')
+                    if "http" in url:
+                        rock.append([comp_name,url])
+                    else:
+                        rock.append([comp_name,comp_url+url])
+        except:           
+            logging.basicConfig(filename='company.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s',level=logging.INFO)
+            logging.info(comp_name)
+    for i in rock:
+        if j not in cena:
+            cena.append(i)
+    return cena
+
 
 def get_location(text):
     gets_list=[]
@@ -107,7 +105,7 @@ def json_to_csv_file(json_filename,csv_filename):
             writer.writerows(temp) 
 
 
-if __name__=="__main__":
+if __name__=='__main__':
 
     html= get_webpage(url)
     compa=get_list(html)
@@ -117,7 +115,7 @@ if __name__=="__main__":
     contact_list=get_contact_page_link(page_html)
     print(contact_list)
     print()
-    filename="locs.json"
+    filename="new.json"
     com_dict={}
     for company in contact_list:
         name=company[0]
@@ -129,6 +127,6 @@ if __name__=="__main__":
         print()
     print(com_dict)
     save_to_json(filename,com_dict)
-    json_to_csv_file(filename,"locs.csv")
+    json_to_csv_file(filename,"new.csv")
 
 
