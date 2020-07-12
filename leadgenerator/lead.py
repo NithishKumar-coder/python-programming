@@ -107,7 +107,7 @@ def json_to_csv_file(json_filename,csv_filename):
             writer.writerows(temp) 
 
 
-def main(url):
+if __name__=="__main__":
 
     html= get_webpage(url)
     compa=get_list(html)
@@ -130,7 +130,5 @@ def main(url):
     print(com_dict)
     save_to_json(filename,com_dict)
     json_to_csv_file(filename,"locs.csv")
-
-main(url)
 
 
