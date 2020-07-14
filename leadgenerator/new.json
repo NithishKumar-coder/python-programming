@@ -1,39 +1,191 @@
 {
   "Acquia, Inc": [
-    " 10th Floor Boston, MA 02109",
-    "600 Congress Ave Austin, TX 78701",
-    " Suite 550 Portland, OR 97209",
-    "Suite 235 Santa Clara, CA 95050",
-    "53 State Street, 10th Floor Boston, MA 02109 United States",
-    "Austin, Texas 600 Congress Ave Austin, TX 78701 United States",
-    "Santa Clara, CA 451 El Camino Real Suite 235 Santa Clara, CA 95050 United States"
+    {
+      "SubaddressType": "10th",
+      "SubaddressIdentifier": "Floor",
+      "PlaceName": "Boston,",
+      "StateName": "MA",
+      "ZipCode": "02109"
+    },
+    {
+      "AddressNumber": "600",
+      "StreetName": "Congress",
+      "StreetNamePostType": "Ave",
+      "PlaceName": "Austin,",
+      "StateName": "TX",
+      "ZipCode": "78701"
+    },
+    {
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "550",
+      "PlaceName": "Portland,",
+      "StateName": "OR",
+      "ZipCode": "97209"
+    },
+    {
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "235",
+      "PlaceName": "Clara,",
+      "StateName": "CA",
+      "ZipCode": "95050"
+    },
+    {
+      "AddressNumber": "53",
+      "StreetName": "State",
+      "StreetNamePostType": "Street,",
+      "OccupancyIdentifier": "10th",
+      "OccupancyType": "Floor",
+      "PlaceName": "Boston,",
+      "StateName": "MA",
+      "ZipCode": "02109",
+      "CountryName": "States"
+    },
+    {
+      "Recipient": "Texas",
+      "AddressNumber": "600",
+      "StreetName": "Congress",
+      "StreetNamePostType": "Ave",
+      "PlaceName": "Austin,",
+      "StateName": "TX",
+      "ZipCode": "78701",
+      "CountryName": "States"
+    },
+    {
+      "PlaceName": "Clara,",
+      "StateName": "CA",
+      "AddressNumber": "451",
+      "StreetName": "Real",
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "235",
+      "ZipCode": "95050",
+      "CountryName": "States"
+    }
   ],
   "Acquire Media": [
-    "HQ7900 International DriveSuite 800Bloomington, MN 55425",
-    "North Wickham RoadSuite 111Melbourne, FL 32940",
-    "Knights Run AvenueSuite 940Tampa, FL 33602",
-    " Kierland BlvdSuite 320Scottsdale, AZ 85254",
-    "Parkland PlazaSuite BAnn Arbor, MI 48103",
-    "Headquarters7900 International DriveSuite 800Bloomington, MN 55425",
-    "0662Minnesota1652 Greenview DriveSuite 220Rochester, MN 55902",
-    "Becker Farm RdSuite 401Roseland, NJ 07068",
-    "1960 Road WestSuite 503Houston, TX 77069",
-    "400 West Suite 100Lindon, UT 84042"
+    {
+      "Recipient": "800Bloomington,",
+      "StateName": "MN",
+      "ZipCode": "55425"
+    },
+    {
+      "Recipient": "RoadSuite",
+      "PlaceName": "111Melbourne,",
+      "StateName": "FL",
+      "ZipCode": "32940"
+    },
+    {
+      "LandmarkName": "Run",
+      "PlaceName": "940Tampa,",
+      "StateName": "FL",
+      "ZipCode": "33602"
+    },
+    {
+      "Recipient": "320Scottsdale,",
+      "StateName": "AZ",
+      "ZipCode": "85254"
+    },
+    {
+      "Recipient": "PlazaSuite",
+      "PlaceName": "Arbor,",
+      "StateName": "MI",
+      "ZipCode": "48103"
+    },
+    {
+      "Recipient": "DriveSuite",
+      "PlaceName": "220Rochester,",
+      "StateName": "MN",
+      "ZipCode": "55902"
+    },
+    {
+      "Recipient": "401Roseland,",
+      "StateName": "NJ",
+      "ZipCode": "07068"
+    },
+    {
+      "AddressNumber": "1960",
+      "StreetNamePostType": "Road",
+      "PlaceName": "503Houston,",
+      "StateName": "TX",
+      "ZipCode": "77069"
+    },
+    {
+      "AddressNumber": "400",
+      "StreetNamePreDirectional": "West",
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "100Lindon,",
+      "StateName": "UT",
+      "ZipCode": "84042"
+    }
   ],
   "Acrolinx GmbH": [
-    "Suite 240  Waltham, MA 02451"
+    {
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "240",
+      "PlaceName": "Waltham,",
+      "StateName": "MA",
+      "ZipCode": "02451"
+    }
   ],
   "Act-On Software, Inc.": [
-    "121 SW Morrison St.Suite 1600Portland, OR 97204"
+    {
+      "AddressNumber": "121",
+      "StreetNamePreDirectional": "SW",
+      "StreetName": "Morrison",
+      "PlaceName": "1600Portland,",
+      "StateName": "OR",
+      "ZipCode": "97204"
+    }
   ],
   "Apple, Inc.": [
-    "   Cupertino, CA 95014",
-    "Apple One Apple Park Way      Cupertino, CA 95014"
+    {
+      "PlaceName": "Cupertino,",
+      "StateName": "CA",
+      "ZipCode": "95014"
+    },
+    {
+      "Recipient": "Apple",
+      "AddressNumber": "One",
+      "StreetName": "Park",
+      "StreetNamePostType": "Way",
+      "PlaceName": "Cupertino,",
+      "StateName": "CA",
+      "ZipCode": "95014"
+    }
   ],
   "Aptara, Inc.": [
-    "Suite 522 Falls Church, VA 22042",
-    " Suite 301 Newton, MA 02458",
-    "2901 Telestar Court, Suite 522 Falls Church, VA 22042",
-    "150 California Street, Suite 301 Newton, MA 02458"
+    {
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "522",
+      "PlaceName": "Church,",
+      "StateName": "VA",
+      "ZipCode": "22042"
+    },
+    {
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "301",
+      "PlaceName": "Newton,",
+      "StateName": "MA",
+      "ZipCode": "02458"
+    },
+    {
+      "AddressNumber": "2901",
+      "StreetName": "Telestar",
+      "StreetNamePostType": "Court,",
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "522",
+      "PlaceName": "Church,",
+      "StateName": "VA",
+      "ZipCode": "22042"
+    },
+    {
+      "AddressNumber": "150",
+      "StreetName": "California",
+      "StreetNamePostType": "Street,",
+      "OccupancyType": "Suite",
+      "OccupancyIdentifier": "301",
+      "PlaceName": "Newton,",
+      "StateName": "MA",
+      "ZipCode": "02458"
+    }
   ]
 }
