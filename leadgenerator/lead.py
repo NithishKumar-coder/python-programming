@@ -5,10 +5,9 @@ import logging
 import json
 import csv
 import help
-
 from bs4 import BeautifulSoup
 
-
+#for extracting webpage
 def get_webpage(url):
     try:
         response = urllib.request.Request(url, headers= {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'})
@@ -20,6 +19,7 @@ def get_webpage(url):
     except:
         return None
 
+#for getting text from webpage
 def get_webpage_text(html):
     soup=BeautifulSoup(html,'lxml')
     content_text=soup.text
@@ -36,6 +36,7 @@ def get_webpage_text(html):
     content_text=("".join(result)).replace("\n"," ")  '''     
     return content_text
 
+#for getting list of companies and their contact links
 def get_list(page_html):
     soup=BeautifulSoup(page_html,"lxml")
     tab=soup.findAll("a",{"class":"100link"})
@@ -48,6 +49,7 @@ def get_list(page_html):
             company_lists.append(company)   
     return company_lists
 
+#for getting exact contact page
 def get_contact_page_link(html):
     rock=[]
     soup = BeautifulSoup(html, 'lxml')
@@ -69,7 +71,7 @@ def get_contact_page_link(html):
     rock=list(dict.fromkeys(rock))
     return rock
 
-
+#for getting us location
 def get_location(text):
     local_list=[]
     address=help.helper(text)
@@ -78,11 +80,12 @@ def get_location(text):
             local_list.append(i)
     return local_list
 
-
+#saving as a json
 def save_to_json(filename,json_dict):
      with open(filename, "w") as f:
             f.write(json.dumps(json_dict, sort_keys=False, indent=2, separators=(',', ': ')))
 
+#coverting to csv
 def json_to_csv_file(json_filename,csv_filename):
     with open(json_filename) as json_file: 
         data =json.load(json_file)
@@ -97,7 +100,7 @@ def json_to_csv_file(json_filename,csv_filename):
 
 
 if __name__=='__main__':
-    #Create and configure logger
+    #Create  logger
     logging.basicConfig(filename="Company_details.log",format='%(asctime)s %(message)s',filemode='w')
     #Creating an object
     logger=logging.getLogger()
