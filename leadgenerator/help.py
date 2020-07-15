@@ -1,3 +1,4 @@
+
 import usaddress
 import re
 def helper(text):
@@ -11,15 +12,4 @@ def helper(text):
             if len(item)>4:
                  address_list.append(item)
     address_list=list(dict.fromkeys(address_list))
-
-    #parsing with usaddress module
-    detail_list=[]
-    for i in address_list:
-        detail_list.append(usaddress.parse(i))
-    l=[]
-    for item in detail_list:
-        details_dict={}
-        for inner_item in item:
-            details_dict[inner_item[1]]=inner_item[0]
-        l.append(details_dict)
-    return l
+    return address_list
