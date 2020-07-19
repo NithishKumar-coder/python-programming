@@ -101,6 +101,7 @@ def json_to_csv_file(json_filename,csv_filename):
 
 
 if __name__=='__main__':
+    invalid_html=[]
     #Create  logger
     logging.basicConfig(filename="Company_details.log",format='%(asctime)s %(message)s',filemode='w')
     #Creating an object
@@ -116,27 +117,30 @@ if __name__=='__main__':
     print(compa_list)
 
     address=[]
-    for company in compa_list[:10]:
+    for company in compa_list:
         complete=[]
         url=company[1]
         page_html=get_webpage(url)
-        if page_html==None:
-            print("can't access contact page of:"+company[0]+'\n')
-            pass
-        else:
-            contact_list=get_contact_page_link(page_html)
-            if len(contact_list):
-                for i in contact_list:
-                    if i.startswith('/'):
-                        complete.append(company[1]+i)
-                    else:
-                        complete.append(i)
-                address.append([company[0],complete])
+        try:
+            if page_html==None:
+                print("can't access contact page of:"+company[0]+'\n')
+                pass
             else:
-               print("no location details available for"+company[0]+'\n')
-               logger.setLevel(logging.DEBUG)
-               logger.info("Sorry! no details are available")
-               logger.info(company[0]) 
+                contact_list=get_contact_page_link(page_html)
+                if len(contact_list):
+                    for i in contact_list:
+                        if i.startswith('/'):
+                            complete.append(company[1]+i)
+                        else:
+                            complete.append(i)
+                    address.append([company[0],complete])
+                else:
+                    print("no location details available for"+company[0]+'\n')
+                    logger.setLevel(logging.DEBUG)
+                    logger.info("Sorry! no details are available")
+                    logger.info(company[0]) 
+        except:
+            invalid_html.append(company[0])
 
     empty=[]        
     filename="new.json"
@@ -167,6 +171,7 @@ if __name__=='__main__':
     for i in empty:
         logger.setLevel(logging.DEBUG)
         logger.info(i)
+    print(invalid_html)
 
     save_to_json(filename,com_dict)
     json_to_csv_file(filename,"new.csv")
